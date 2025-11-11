@@ -2,20 +2,19 @@
 #include <stdlib.h>
 #include <time.h>
 
+/*
+Дан массив. Удалить из него нули и после каждого числа, оканчивающего на 5, вставить 1
+*/
 int main()
 {
 
-    /*
-    Дан массив. Удалить из него нули и после каждого числа, оканчивающего на 5, вставить 1
-    */
-
-    // переменные для управления циклом и размерности исходного массива 
+    // переменные для управления циклом и размерности исходного массива
     int i, n;
     // приглашение пользователю ввести размерность массива
     printf("Введите размерность массива -> ");
     // инициализация переменной размера массива
-    scanf("%d", &n);      
-    
+    scanf("%d", &n);
+
     // запуск генератора
     srand(time(NULL));
 
@@ -28,19 +27,20 @@ int main()
     // заполнение исходного массива случайными значениями и расчет длины результирующего массива
     for (int i = 0; i < n; i++)
     {
-        originArray[i] = rand()%100;
+        originArray[i] = rand() % 100;
 
         if (originArray[i] != 0)
         {
             resultArrayLength++;
 
-            if (originArray[i] % 10 == 5 || originArray[i] % 10 == -5) resultArrayLength++;
+            if (originArray[i] % 10 == 5 || originArray[i] % 10 == -5)
+                resultArrayLength++;
         }
     }
 
     // объявление и инициализация результирующего массива
     int resultArray[resultArrayLength];
-    
+
     // переменная для итерирования результирующего массива
     int count = 0;
     for (int i = 0; i < n; i++)
@@ -49,7 +49,8 @@ int main()
         {
             resultArray[count++] = originArray[i];
 
-            if (originArray[i] % 10 == 5 || originArray[i] % 10 == -5) resultArray[count++] = 1;
+            if (originArray[i] % 10 == 5 || originArray[i] % 10 == -5)
+                resultArray[count++] = 1;
         }
     }
 
@@ -66,11 +67,5 @@ int main()
     {
         printf("result array[%d] = %d\n", i, resultArray[i]);
     }
-    
-    
-    
-    
-
-
     return 0;
 }
